@@ -1,0 +1,75 @@
+//**
+//* DEFAULT LISTS WIDGET
+//* This widget is used for the entire project
+//*
+//**
+
+// List styles
+ul.unstyled, ol.unstyled, %unstyled{
+margin: 0;
+padding: 0;
+list-style: none;
+}
+ul.inline, ol.inline {
+margin: 0;
+padding: 0;
+list-style: none;
+}
+ul.inline > li, ol.inline > li {
+  display: inline-block;
+  padding-right: 5px;
+  padding-left: 5px;
+  vertical-align: middle;
+}
+
+.grid-list{
+  .grid-item{
+    margin: 0 20px 20px 0;
+  }
+}
+
+.grid-justify{
+  text-align: justify;
+  font-size: 1px;
+  &:after{
+    content:"";
+    width: 100%;
+    display: inline-block;
+  }
+  .grid-item{
+    display: inline-block;
+    vertical-align: middle;
+  }
+}
+
+dl {
+  margin-bottom: 20px;
+}
+
+dt,
+dd {
+  line-height: 20px;
+}
+
+dt {
+  font-weight: bold;
+}
+
+dd {
+  margin-left: 10px;
+}
+
+.dl-horizontal dt {
+  float: left;
+  width: 160px;
+  overflow: hidden;
+  clear: left;
+  // text-overflow: ellipsis;
+  // white-space: nowrap;
+}
+
+.dl-horizontal dd {
+  margin-left: 180px;
+  @extend %clearfix;
+}
+

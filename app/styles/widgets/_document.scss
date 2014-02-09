@@ -1,0 +1,16 @@
+//**
+//* DOCUMENT WIDGET
+//* This widget is main of the project
+//* Here we include base markup (see it on the end of file)
+//* or describe some general rules for all project
+//**
+
+
+// include widgets
+@import "document/forms",
+        "document/base_lists",
+        "document/texts",
+        "document/images",
+        "document/titles",
+        "document/buttons",
+        "document/sections";

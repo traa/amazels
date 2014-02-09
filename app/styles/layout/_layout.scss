@@ -1,0 +1,42 @@
+////////////////////////////////////////////////////////////////////////////////
+// Layout Styling
+// --------------------
+//
+// Only CSS that affects the layout (positioning) of major elements should be
+// listed here. Most visual styling should go in _custom.scss.
+////////////////////////////////////////////////////////////////////////////////
+//**
+//* MAIN LAYOUT APP
+//*
+//**
+
+header{
+    height: $header_height;
+}
+footer {
+    height: $footer_height;
+    margin-top: -$footer_height;
+}
+// push footer at the bottom
+.page-wrap {
+    // Remove 'auto' and the width to switch to a fluid width.
+    margin-top:-$header_height;
+    position: relative;
+    padding-top: $header_height;
+    padding-bottom: $footer_height;
+    min-height:100%; // Page height fills the screen and footer at the bottom.
+}
+// setting our content
+.page-content{
+    position: relative;
+    width: $page_width;
+    margin: 0 auto;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+
+
+@import "grid",
+        "header",
+        "footer";

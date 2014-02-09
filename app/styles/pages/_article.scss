@@ -1,0 +1,71 @@
+//**
+//* ARTICLE PAGE
+//* REQUIREMENTS:
+//* 1. Vertical rhythm compass extension
+//**
+
+
+// setting vertical rhythm (margins,font-size)
+// declare abstract class names
+.alpha {
+  @include adjust-font-size-to(35px);
+  @include margin-trailer(1,35px);
+  @include margin-leader(1,35px);
+}
+.beta {
+  @include adjust-font-size-to(30px);
+  @include margin-trailer(1,30px);
+  @include margin-leader(1,30px);
+}
+.gamma {
+  @include adjust-font-size-to(24px);
+  @include margin-trailer(1,24px);
+  @include margin-leader(1,24px);
+}
+.delta {
+  @include adjust-font-size-to(20px);
+  @include margin-trailer(1,20px);
+  @include margin-leader(1.5,20px);
+}
+.epsilon {
+  @include adjust-font-size-to(18px);
+  @include margin-trailer(1,18px);
+  @include margin-leader(1,18px);
+}
+.zeta {
+  @include adjust-font-size-to(16px);
+  @include margin-trailer(1,16px);
+  @include margin-leader(1,16px);
+  font-weight: bold;
+}
+.eta{
+  @include adjust-font-size-to(14px);
+  @include margin-trailer(1,14px);
+  @include margin-leader(1,14px);
+}
+.theta{
+  @include adjust-font-size-to(13px);
+  @include margin-trailer(1,13px);
+}
+.iota{
+  @include adjust-font-size-to(26px);
+  @include margin-trailer(1,26px);
+}
+.lead-text,.notice-text{
+  @include adjust-font-size-to(16px, 1.2);
+  @include margin-trailer(1,16px);
+}
+.notice-text{
+  font-weight: bold;
+}
+
+.image{
+  max-width: 100%;
+  @include margin-trailer(1);
+  @include margin-leader(1/2);
+}
+
+.quote-author{
+
+}
+

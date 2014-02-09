@@ -1,0 +1,65 @@
+//**
+//* SECTIONS WIDGET
+//* This widget is used for the entire project
+//* Here we make default model for block with header, content and footer
+//* and describe behavior for border, and other
+//**
+
+
+// set values for widget
+$sectionBorderWidth:1px;
+
+.section-header, .section-footer, .section-content{
+  border: solid $black-1; // set border  for all blocks
+}
+
+.section-wrap,%section-wrap{
+	position: relative;
+	> :first-child{
+		@extend %small-radius-top; // set for first sections border-radius
+		border-width: $sectionBorderWidth;
+	}
+	> :last-child{
+		@extend %small-radius-bottom; // set for last sections border-radius
+	}
+	> :first-child:last-child{
+		@extend %small-radius; // set for all single elements border type and border radius
+	}
+	> :not(:first-child):not(:last-child){
+		@extend %no-radius;
+	}
+}
+.section-header,.section-footer,.section-content{
+	&:not(:first-child):not(:last-child){
+		@extend %no-radius;
+	}
+}
+
+.section-header{
+	background:$white-1;
+	border-width: $sectionBorderWidth; // if this block not first or between the content blocks
+	&:first-child ~ &{
+		border-width: 0 $sectionBorderWidth $sectionBorderWidth;
+	}
+}
+
+.section-content{
+	background:$white-1;
+	border-width: 0 $sectionBorderWidth $sectionBorderWidth;
+	// & &{
+	// 	border-width: 0; // set inner element if it has parent class
+	// }
+	// & + &{
+	// 	margin-top: -$sectionBorderWidth;
+	// }
+	.section-footer{
+		border-width: $sectionBorderWidth 0 0; // set border top, change default value
+	}
+}
+.section-footer{
+	background:$white-1;
+	padding: 20px;
+	border-width: 0 $sectionBorderWidth $sectionBorderWidth; // set default border view for not first content element in DOM
+}
+
+

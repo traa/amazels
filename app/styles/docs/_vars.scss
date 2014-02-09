@@ -1,0 +1,91 @@
+////////////////////////////////////////////////////////////////////////////////
+// "vars" partial
+// --------------------
+//
+////////////////////////////////////////////////////////////////////////////////
+
+//
+// DEFINE VARIABLES
+////////////////////////////////////////
+
+// DEFAULT COMPASS CONFIG
+$experimental-support-for-khtml:false;
+$experimental-support-for-opera:false;
+$support-for-original-webkit-gradients: false;
+$experimental-support-for-microsoft: false;
+$legacy-support-for-mozilla: false;
+//
+// Widths
+//
+
+$page_width: 960px;
+$min_page_width: 1024px;
+//
+// Heights
+//
+
+$footer_height: 0;
+$header_height: 0;
+// gaps
+
+// CSS constructor
+$mobile: true;
+$ie_support: true;
+
+
+//
+// Backgrounds, change these when you get started with your theme.
+//
+// $preload-list: image-url('logo_active.svg') image-url('logo_colon_active.svg') image-url('logo_active_fallback.png');
+$preload-img:();
+
+
+$header_bg:#1ab7ea;
+$footer_bg: #1ab7ea;
+
+
+
+// paddings
+$paddingLarge:20px;
+
+
+//
+// Fonts
+//
+
+// SETTING VERTICAL RHYTHM
+$base-font-size: 12px;
+// new font to em font-size/base-font-size
+$base-line-height: 20px;
+$round-to-nearest-half-line: true;
+// new line-height base-line-height/font-size
+
+$main_font: "Courier New", Helvetica, Arial, sans-serif;
+$monospace_font: "Courier New", "DejaVu Sans Mono", monospace, sans-serif;
+
+//
+// Colors
+//
+$white-1: #fff;
+$black-1: #455560;
+$blue-1: #2191d4;
+
+// colors for status buttons
+
+// set color to main elements
+
+$link_color: $blue-1;
+$visited_link_color: $link_color;
+$active_link_color: $blue-1;
+$main_text_color: $black-1;
+$header_text_color: $black-1; // headings colors
+$selection_text_color: #333;
+$selection_bg_color: #B3D4FC;
+
+
+
+//
+// Partials to be shared with all .scss files.
+////////////////////////////////////////
+@import "compass";                  // See http://compass-style.org
+@import "helpers/mixins";                   // Import our custom mixins last.

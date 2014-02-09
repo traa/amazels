@@ -1,0 +1,76 @@
+////////////////////////////////////////////////////////////////////////////////
+// Default Element Styles
+// --------------------
+// This partial establishes general rules and browser resets. Standard HTML
+// elements (text, lists, tables, forms, etc...) are all defined here.
+//
+// This is largely addapted from the HTML5 Boilerplate project. Detailed
+// information about Boilerplate CSS can be found at: http://h5bp.com/css
+////////////////////////////////////////////////////////////////////////////////
+//**
+//* DOCUMENT
+//* REQUIREMENTS:
+//**
+
+// Reset box sizing
+* {
+  margin: 0;
+  @include box-sizing(border-box);
+}
+
+// HTML5 display definitions
+// helpers and base typography
+@import "helpers/helpers",
+        "typography";
+
+// Base
+html,body{
+  height: 100%;
+}
+
+html {
+  font-size: 100%; // Correct text resizing oddly in IE6/7 when body font-size is set using em units
+  overflow-y: scroll;
+}
+
+button, input, select, textarea {
+  font-family: $main_font;
+  color: $main_text_color;
+}
+[type="submit"],[type="button"],button{
+  border: none;
+}
+
+body {
+  // Setting up font size, leading and font family
+  position: relative;
+  background:$white-1;
+  color: $main_text_color;
+  font-family: $main_font;
+  font: 12px / 1.3125 $main_font;
+  min-width: $page_width;
+  // @include debug-vertical-rhythm;
+}
+
+
+//
+// Remove text-shadow in selection highlight: h5bp.com/i
+// These selection declarations have to be separate
+//
+::-moz-selection {
+  background: $selection_bg_color;
+  color: $selection_text_color;
+  text-shadow: none;
+}
+::selection {
+  background: $selection_bg_color;
+  color: $selection_text_color;
+  text-shadow: none;
+}
+::-ms-clear {
+    display: none;
+}
+@import "sprite_map",
+        "../widgets/document";
+
+

@@ -1,0 +1,162 @@
+//**
+//* APP HELPERS
+//**
+// setting default colors and states for brured view
+%blured-white-view{
+    @include blured-view($white-1, right, 0%,100%);
+}
+.blured-white-view{
+    @extend %blured-white-view;
+}
+.blured-white-view{
+    @extend %clip-text;
+}
+
+.blured-view-bottom{
+  overflow: hidden;
+  @include blured-view($white-1, bottom, 0%,100%);
+}
+
+// clip content
+%clip-text{
+    @include clip-text;
+}
+%clip-content{
+  height: 100%;
+  overflow: hidden;
+}
+// disable shadow
+%no-shadow{
+  @include box-shadow(none !important);
+}
+// setting radius
+%no-radius{
+  @include border-radius(0 !important);
+}
+%small-radius{
+  @include border-radius(3px);
+}
+%small-radius-top{
+  @include border-radius(3px 3px 0 0);
+}
+%small-radius-bottom{
+  @include border-radius(0 0 3px 3px);
+}
+%small-radius-right{
+  @include border-radius(3px 0 0 3px);
+}
+%small-radius-left{
+  @include border-radius(0 3px 3px 0);
+}
+
+.column-container{
+  display: table;
+  table-layout: fixed;
+  width: 100%;
+}
+[class*="equal-column"]{
+  display: table-cell;
+  vertical-align: top;
+  height: 100%;
+}
+// equal blocks height
+.equal-container{
+  position: relative;
+  &:before{
+    content: "";
+    display: block;
+    margin-top: 100%;
+  }
+  .equal-content{
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+  }
+}
+
+/* Image replacement */
+.ir {
+  background-color: transparent;
+  border: 0;
+  overflow: hidden;
+  /* IE 6/7 fallback */
+  *text-indent: -9999px;
+  &:before {
+    content: "";
+    display: block;
+    width: 0;
+    height: 150%;
+  }
+}
+%text-replace{
+  font: 0/0 serif;
+  text-shadow: none;
+  color: transparent;
+}
+// break long words
+%text-break{
+  -ms-word-break: break-all;
+  word-break: break-all;
+   /* Non standard for webkit */
+  word-break: break-word;
+}
+
+%unselectable{
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: -moz-none;
+  -o-user-select: none;
+  user-select: none;
+}
+/* Hide from both screenreaders and browsers: h5bp.com/u */
+.hide {
+  display: none !important;
+  // visibility: hidden;  // ie8 makes bug
+}
+/* Hide only visually, but have it available for screenreaders: h5bp.com/v */
+.visuallyhidden { // Hide only visually, but have it available for screenreaders: h5bp.com/v
+  @include element-invisible;
+  &.focusable:active, &.focusable:focus { // Allow the element to be focusable when navigated to via the keyboard: h5bp.com/p
+    @include element-invisible-off;
+  }
+}
+
+/* Hide visually and from screenreaders, but maintain layout */
+.invisible {
+  visibility: hidden !important;
+}
+
+// Clearfix: contain floats
+.clearfix, %clearfix{
+  @include my-clearfix;
+}
+
+// clear classes
+.cleft {
+  clear: left;
+}
+.cright {
+  clear: right;
+}
+.clear {
+  clear: both;
+}
+
+// Float classes
+.right {
+  float: right !important;
+}
+
+.left {
+  float: left !important;
+}
+// Float with margins
+.fleft {
+  @include my-float-left;
+}
+
+.fright {
+  @include my-float-right;
+}

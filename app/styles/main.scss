@@ -1,0 +1,32 @@
+////////////////////////////////////////////////////////////////////////////////
+// Page Styling
+// --------------------
+// This file combines all partials into one main stylesheet, to be loaded on
+// all pages.
+////////////////////////////////////////////////////////////////////////////////
+
+@import "docs/vars"; // Imports default variables and mixins.
+@import "docs/document"; // Default content styles.
+@import "layout/layout";   // Defines positioning of major page elements.
+@import "mobile/mobile";   // We can now define our mobile styles inline
+@import "ie";      // Fixes to support IE8.
+
+
+// include app widgets
+
+
+// Load page specific styles
+@import "pages/article";
+
+// include vendor widgets
+
+// init preload image
+@if length($preload-img) != 0 {
+    body{
+        &:before{
+            display: none;
+            content: $preload-img;
+        }
+    }
+}
+

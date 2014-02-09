@@ -1,0 +1,31 @@
+//**
+//* TEXT WIDGET
+//* This widget is used for the entire project
+//* Use this for rewrite colors
+//**
+
+
+// text helpers
+.text-node{
+  vertical-align: middle;
+}
+.text-left {
+    text-align: left;
+}
+.text-center {
+    text-align: center;
+}
+.text-right {
+    text-align: right;
+}
+
+// Text colors
+.black-text{
+    color: $black-1 !important;
+}
+.white-text{
+    color: $white-1 !important;
+}
+
+
+

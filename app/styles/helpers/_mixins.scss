@@ -1,0 +1,291 @@
+////////////////////////////////////////////////////////////////////////////////
+// Custom Sass Mixins
+// --------------------
+// This file contains custom Sass mixins and functions. It will be included 
+// in any files that import the "base" partial. To use a mixin from this 
+// file, add this line to the top of your .scss file:
+//   @import "vars";
+// Then to use a mixin for a particular rule, add this inside the ruleset's
+// curly brackets:
+//   @include mix-in-name;
+////////////////////////////////////////////////////////////////////////////////
+
+//
+// Custom Functions
+////////////////////////////////////////
+
+
+
+//
+// Custom Mixins
+////////////////////////////////////////
+@mixin blured-view ($bg-color,$bg-direction,$bg-width-1,$bg-width-2){
+  position: relative;
+  &:after{
+    content: "";
+    position: absolute;
+    z-index: 1;
+    @if ($bg-direction != bottom){
+      width: 20%;
+      height: 100%;
+      top: 0;
+      right: 0;
+    }
+    @else{
+      bottom: 0;
+      left: 0;
+      height: 20%;
+      width: 100%;
+    }
+    @include background-image(linear-gradient($bg-direction, rgba($bg-color,1) $bg-width-1,rgba($bg-color,0) $bg-width-2));
+  }
+}
+@mixin clip-text{
+  overflow: hidden;
+  // text-overflow: ellipsis;
+  white-space: nowrap;
+}
+@mixin btn-build {
+  position: relative;
+  display: inline-block;
+  font: bold 14px $main_font;
+  white-space: nowrap;
+  text-decoration: none !important;
+  text-align: center;
+  cursor: pointer;
+  vertical-align: middle;
+  outline: none;
+  @extend %small-radius;
+}
+// Hide element visually, but have it available for screenreaders.
+@mixin element-invisible {
+  border: 0;
+  clip: rect(0 0 0 0);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute !important;
+  width: 1px;
+}
+
+// Turns off the element-invisible effect.
+@mixin element-invisible-off {
+  clip: auto;
+  height: auto;
+  margin: 0;
+  overflow: visible;
+  position: static !important;
+  width: auto;
+}
+
+// Hide element visually, but have it available for screenreaders 
+// and make it focusable
+@mixin element-invisible-focusable {
+  @include element-invisible;
+  &:active,
+  &:focus { // Allow the element to be focusable when navigated to via the keyboard: h5bp.com/p
+    @include element-invisible-off;
+  }
+}
+
+// Clearfix to contain floats: h5bp.com/q
+@mixin my-clearfix {
+  &:before, &:after { // prevent top margin colapse
+    content: "";
+    display: table;
+  }
+  @include pie-clearfix;
+}
+
+// Float element left with margins
+@mixin my-float-left {
+  @include float-left;
+  margin: 0 10px 5px 0;
+}
+
+// Float element right with margins
+@mixin my-float-right {
+  @include float-right;
+  margin: 0 0 5px 10px;
+}
+
+@mixin debug-vertical-rhythm(){
+  @include baseline-grid-background($base-line-height, $grey-3);
+}
+
+@mixin preload-img($name){
+  $tmp: image-url($name);
+  background-image: $tmp;
+  $preload-img: append($preload-img, $tmp);
+}
+
+@mixin arrow-view{
+    width: 0;
+    height: 0;
+    position: absolute;
+    border: solid transparent;
+    border: solid rgba(255,255,255, 0);
+}
+
+@mixin arrow-direction($direction,$arrow-size,$arrow-color){
+    @if $direction == 'top' {
+        border-width: 0 $arrow-size $arrow-size $arrow-size;
+        border-bottom-color: $arrow-color; 
+    } @else if $direction == 'right' {
+        border-width: $arrow-size 0 $arrow-size $arrow-size;
+        border-left-color: $arrow-color;
+    } @else if $direction == 'bottom' {
+        border-width: $arrow-size $arrow-size 0 $arrow-size;
+        border-top-color: $arrow-color;
+    } @else if $direction == 'left' {
+        border-width: $arrow-size $arrow-size $arrow-size 0;
+        border-right-color: $arrow-color;
+    } @else if $direction == 'top-left' {
+        border-width: $arrow-size $arrow-size 0 0;
+        border-top-color: $arrow-color;
+    } @else if $direction == 'top-right' {
+        border-width: $arrow-size 0 0 $arrow-size;
+        border-top-color: $arrow-color; 
+    } @else if $direction == 'bottom-left' {
+        border-width: 0 $arrow-size $arrow-size 0;
+        border-bottom-color: $arrow-color;  
+    } @else if $direction == 'bottom-right' {
+        border-width: 0 0 $arrow-size $arrow-size;
+        border-bottom-color: $arrow-color;
+    }
+}
+@mixin arrow-position($arrow-position){
+  @if $arrow-position == 'on-top' {
+    bottom: 100%;
+  } @else if $arrow-position == 'on-left' {
+    right: 100%;
+  } @else if $arrow-position == 'on-right' {
+    left: 100%;
+  } @else if $arrow-position == 'on-bottom' {
+    top: 100%;
+  }
+}
+@mixin arrow-offset($arrow-position, $bd-width, $arrow-offset){
+    @if $arrow-offset {
+        @if $bd-width{
+            // If arrow has border
+            @if $arrow-position == 'on-top' {
+                left: $arrow-offset;
+                margin-left: $bd-width;
+            } @else if $arrow-position == 'on-left' {
+                top: $arrow-offset;
+                margin-top: $bd-width;
+            } @else if $arrow-position == 'on-right' {
+                top: $arrow-offset;
+                margin-top: $bd-width;
+            } @else if $arrow-position == 'on-bottom' {
+                left: $arrow-offset;
+                margin-left: $bd-width;
+            }
+        }
+        @else{
+            // if only one arrow without border
+            @if $arrow-position == 'on-top' {
+                left: $arrow-offset;
+            } @else if $arrow-position == 'on-left' {
+                top: $arrow-offset;
+            } @else if $arrow-position == 'on-right' {
+                top: $arrow-offset;
+            } @else if $arrow-position == 'on-bottom' {
+                left: $arrow-offset;
+            }
+        }
+    }
+    @else {
+        // if arrow hasn't arrow offset set default position to center
+        @if $arrow-position == 'on-top' or $arrow-position == 'on-bottom' {
+            left: 0;
+            right: 0;
+            margin-left: auto;
+            margin-right: auto;
+        } @else if $arrow-position == 'on-left' or $arrow-position == 'on-right' {
+            top: 0;
+            bottom: 0;
+            margin-bottom: auto;
+            margin-top: auto;
+        }
+    }
+}
+
+@mixin arrow-box-view($direction, $bg-color, $bd-width, $bd-color, $arrow-size, $arrow-position /* l */, $arrow-offset, $arrow-rules){
+    @if $bd-color and $bg-color {
+        // if we use arrow with border
+        @if $arrow-rules{
+            // if we want include all rules for box with arrow
+            background: $bg-color;
+            border: solid $bd-width $bd-color;
+            &:after,&:before{
+                content: "";
+                @include arrow-view;
+            }
+        }
+        &:before{
+            z-index: -1;
+            // include arrow with border color
+            @include arrow-direction($direction, $arrow-size, $bd-color);  
+            @include arrow-position($arrow-position);
+
+            @include arrow-offset($arrow-position, null, $arrow-offset);
+        }
+        &:after{
+            // include arrow with background and set a new size
+            $const:round($bd-width * 1.41421356); // cos(PI/4) * 2
+            $arrow-size: $arrow-size - $const;
+            @if $arrow-offset{
+                // $arrow-offset: $arrow-offset + $const;
+            }
+            @if $direction == 'top-left' or $direction == 'top-right' or $direction == 'bottom-left' or $direction == 'bottom-right' {
+                $arrow-size: $arrow-size - $bd-width; 
+            }
+
+            @include arrow-direction($direction, $arrow-size, $bg-color);
+
+            @include arrow-position($arrow-position);
+
+            @include arrow-offset($arrow-position, $const, $arrow-offset);
+
+        }
+    }
+    @else if $bg-color or $bd-color{
+        // if we want a arrow with background or arrow with border
+        @if $arrow-rules{
+            // include all rules
+            &:before{
+                content: "";
+                @include arrow-view;
+                @if $bg-color {
+                    @include arrow-direction($direction, $arrow-size, $bg-color);
+                }
+                @else if $bd-color { 
+                    @include arrow-direction($direction, $arrow-size, $bd-color);
+                }
+
+                @include arrow-position($arrow-position);
+
+                @include arrow-offset($arrow-position, $bd-width, $arrow-offset);
+            }
+        }
+        @else{
+            // include only arrow type without arrow view (reason -> no repeat code)
+            @if $bg-color {
+                @include arrow-direction($direction, $arrow-size, $bg-color);
+            }
+            @else if $bd-color { 
+                @include arrow-direction($direction, $arrow-size, $bd-color);
+            }
+
+            @include arrow-position($arrow-position);
+
+            @include arrow-offset($arrow-position, $bd-width, $arrow-offset);
+        }
+    }
+}
+
+
+
